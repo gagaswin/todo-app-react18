@@ -1,6 +1,13 @@
-.tas-column-heading {
+.task-column {
+  border: solid 1px #dfe3e6;
+  border-radius: 10px;
+  padding: 7px 7px;
+}
+
+.task-column-heading {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .task-column-icon {

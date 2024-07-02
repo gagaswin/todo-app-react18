@@ -1,21 +1,39 @@
 import React from "react";
 import Tag from "./Tag";
 
+import "./TaskCard.css";
 import deleteIcon from "../assets/delete.png";
 
-const TaskCard: React.FC = () => {
+interface TaskCardProps {
+  title: string;
+  tags: string[];
+  index: number;
+  handleDelete: (taskIndex: number) => void;
+}
+
+const TaskCard: React.FC<TaskCardProps> = ({
+  title,
+  tags,
+  index,
+  handleDelete,
+}) => {
   return (
     <article className="task-card">
-      <p className="task-text">This is example task</p>
+      <p className="task-text">{title}</p>
 
       <div className="task-card-bottom-line">
         <div className="task-card-tags">
-          <Tag tagName="HTML" />
-          <Tag tagName="CSS" />
-          <Tag tagName="JavaScript" />
-          <Tag tagName="React" />
+          {tags.map((tag, index) => (
+            <Tag
+              key={index}
+              tagName={tag}
+              selectTag={() => {}}
+              selected
+              // selected={true}
+            />
+          ))}
         </div>
-        <div className="task-delete">
+        <div className="task-delete" onClick={() => handleDelete(index)}>
           <img className="delete-icon" src={deleteIcon} alt="" />
         </div>
       </div>
