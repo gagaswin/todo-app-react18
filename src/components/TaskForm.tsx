@@ -11,6 +11,7 @@ interface TasksProps {
 const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
   const [taskData, setTaskData] = useState<TaskData>({
     task: "", // "task" sesuaikan dengan attribute name di input
+    description: "", // "description" sesuaikan dengan attribute name di textarea
     status: "todo", // "status" sesuaikan dengan attribute name di select
     tags: [],
   });
@@ -35,11 +36,14 @@ const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
   };
 
   const handleChange: React.ChangeEventHandler = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
 
     setTaskData((prev) => {
+      console.info(prev);
       return { ...prev, [name]: value };
     });
   };
@@ -55,10 +59,13 @@ const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
     // reset data input afters submits
     setTaskData({
       task: "",
+      description: "",
       status: "todo",
       tags: [],
     });
   };
+
+  const listTags: string[] = ["HTML", "CSS", "JavaScript", "React", "Angular"];
 
   // const [task, setTask] = useState<string>("");
   // const [status, setStatus] = useState<string>("todo");
@@ -74,7 +81,7 @@ const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
   // console.info(task, status);
 
   return (
-    <header className="app-header">
+    <div className="app-header">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -84,14 +91,16 @@ const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
           placeholder="Enter your task"
           onChange={handleChange}
         />
-        {/* <textarea
+        <textarea
+          rows={5}
           name="description"
-          id=""
+          value={taskData.description}
           placeholder="Description... "
-        ></textarea> */}
+          onChange={handleChange}
+        ></textarea>
         <div className="task-form-bottom-line">
           <div>
-            {["HTML", "CSS", "JavaScript", "React"].map((tagName) => (
+            {listTags.map((tagName) => (
               <Tag
                 key={tagName}
                 tagName={tagName}
@@ -119,7 +128,7 @@ const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
           </div>
         </div>
       </form>
-    </header>
+    </div>
   );
 };
 

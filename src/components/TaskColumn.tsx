@@ -3,6 +3,7 @@ import React from "react";
 import "./TaskColumn.css";
 import TaskCard from "./TaskCard";
 import { TaskData } from "../type";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Todo from "../assets/direct-hit.png";
 
 interface TaskColumnProps {
@@ -35,6 +36,7 @@ const TaskColumn: React.FC<TaskColumnProps> = ({
             <TaskCard
               key={index}
               title={task.task}
+              description={task.description}
               tags={task.tags}
               index={index}
               handleDelete={handleDelete}

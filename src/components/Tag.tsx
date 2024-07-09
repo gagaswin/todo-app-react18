@@ -4,7 +4,7 @@ import "./Tag.css";
 
 interface TagProps {
   tagName: string;
-  selectTag: (tagName: string) => void;
+  selectTag?: (tagName: string) => void;
   selected: boolean;
 }
 
@@ -13,12 +13,17 @@ interface TagProps {
 //   return <button className="tag">{props.tagName}</button>;
 // };
 
-const Tag: React.FC<TagProps> = ({ tagName, selectTag, selected }) => {
+const Tag: React.FC<TagProps> = ({
+  tagName,
+  selectTag = () => {},
+  selected,
+}) => {
   const tagStyle: any = {
     HTML: { backgroundColor: "#fda821" },
     CSS: { backgroundColor: "#15d4c8" },
     JavaScript: { backgroundColor: "#ffd12c" },
     React: { backgroundColor: "#4cdafc" },
+    Angular: { backgroundColor: "#FF5733" },
     default: { backgroundColor: "#f9f9f9" },
   };
 

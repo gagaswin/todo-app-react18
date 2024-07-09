@@ -1,12 +1,6 @@
 .app {
-  display: grid;
-  grid-template-rows: 150px auto;
-}
-
-.app-main {
   display: flex;
-  justify-content: space-between;
-  padding: 20px 8%;
+  flex-direction: column;
 }
 
 .task-column {
