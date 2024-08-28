@@ -7,6 +7,7 @@ const FormPage: React.FC = () => {
     const oldTasks = localStorage.getItem("tasks");
     return oldTasks ? JSON.parse(oldTasks) : [];
   });
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);

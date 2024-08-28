@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import TaskColumn from "./TaskColumn";
 import todoIcon from "../assets/direct-hit.png";
 import doingIcon from "../assets/glowing-star.png";
@@ -15,8 +15,6 @@ const TaskList: React.FC<TaskListProps> = ({
   tasks = [],
   setTasks = () => {},
 }) => {
-  console.info("task from TaskList.tsx", tasks);
-
   const handleDelete = (taskIndex: number) => {
     const newTasks = tasks.filter((_, index) => index !== taskIndex);
     setTasks(newTasks);
@@ -25,6 +23,8 @@ const TaskList: React.FC<TaskListProps> = ({
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  console.info("task from TaskList.tsx", tasks);
 
   return (
     <main className="app-main">

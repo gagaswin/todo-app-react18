@@ -110,7 +110,7 @@ const TaskForm: React.FC<TasksProps> = ({ setTasks }) => {
             ))}
           </div>
 
-          <div>
+          <div className="flex">
             <select
               name="status"
               value={taskData.status}
